@@ -1,7 +1,8 @@
+*** https://www.freecodecamp.org/news/three-ways-to-find-the-longest-word-in-a-string-in-javascript-a2fb04c9757c/
 
 ## 1. Reverse a string
 Reverse a String With Built-In Functions:
-```javascript
+```js
 function reverseString(str) {
     // Step 1. Use the split() method to return a new array
     var splitString = str.split(""); // var splitString = "hello".split("");
@@ -20,7 +21,8 @@ function reverseString(str) {
 }
  
 reverseString("hello");
-```javascript
+```
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 Reverse a String With a Decrementing For Loop:
 ```javascript
@@ -50,7 +52,7 @@ function reverseString(str) {
 }
  
 reverseString('hello');
-```javascript
+```
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 Reverse a String With Recursion: 
 ```javascript
@@ -82,7 +84,8 @@ The method hits the if condition and the most highly nested call returns immedia
 */
 }
 reverseString("hello");
-```javascript
+
+```
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Three Ways to Title Case a Sentence in JavaScript
@@ -135,7 +138,7 @@ function titleCase(str) {
 }
 
 titleCase("I'm a little tea pot");
-```javascript
+```
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 2. Title Case a Sentence With the map() Method
 ```javascript
@@ -178,7 +181,7 @@ function titleCase(str) {
 }
 
 titleCase("I'm a little tea pot");
-```javascript
+```
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
  Title Case a Sentence With the map() and the replace() Methods
  The replace() method returns a new string with some or all matches of a pattern replaced by a replacement.
@@ -218,7 +221,7 @@ function titleCase(str) {
 }
 
 titleCase("I'm a little tea pot");
-```javascript
+```
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Three ways to repeat a string in JavaScript
 
@@ -267,7 +270,7 @@ function repeatStringNumTimes(string, times) {
 }
 
 repeatStringNumTimes("abc", 3);
-```javascript
+```
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 Repeat a String using a Conditional and Recursion:
 ```javascript
@@ -324,7 +327,7 @@ function repeatStringNumTimes(string, times) {
 
 repeatStringNumTimes("abc", 3);
 
-```javascript
+```
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Two ways to confirm the ending of a String in JavaScript
 The Algorithm Challenge Description
@@ -375,7 +378,7 @@ function confirmEnding(string, target) {
 }
 
 confirmEnding('Bastian', 'n');
-```javascript
+```
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 Confirm the Ending of a String With Built-In Functions — with endsWith():
 The endsWith() method determines whether a string ends with the characters of another string, returning true or false as appropriate. This method is case-sensitive.
@@ -446,7 +449,7 @@ function palindrome(str) {
  
 palindrome("A man, a plan, a canal. Panama");
 
-```javascript
+```
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 Check for Palindromes With a FOR loop
 Half-indexing (len/2) has benefits when processing large strings. We check the end from each part and divide the number of iterations inside the FOR loop by two.
@@ -488,7 +491,7 @@ function palindrome(str) {
 
 palindrome("A man, a plan, a canal. Panama");
 Without comm
-```javascript
+```
 
 
 small code
@@ -499,4 +502,137 @@ function isPalindrome(s) {
 
 alert(isPalindrome("malayalam")); 
 alert(isPalindrome("english")); 
-```javascript
+```
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+## Three Ways to Find the Longest Word in a String in JavaScript
+Algorithm Challenge
+Return the length of the longest word in the provided sentence.
+
+Your response should be a number.
+Provided test cases
+findLongestWord(“The quick brown fox jumped over the lazy dog”) should return a number
+findLongestWord(“The quick brown fox jumped over the lazy dog”) should return 6
+findLongestWord(“May the force be with you”) should return 5
+findLongestWord(“Google do a barrel roll”) should return 6
+findLongestWord(“What is the average airspeed velocity of an unladen swallow”) should return 8
+findLongestWord(“What if we try a super-long word such as otorhinolaryngology”) should return 19
+function findLongestWord(str) {
+  return str.length;
+}
+findLongestWord("The quick brown fox jumped over the lazy dog");
+
+Find the Longest Word With a FOR Loop:
+The split() method splits a String object into an array of strings by separating the string into sub strings.
+
+```js
+function findLongestWord(str) {
+  // Step 1. Split the string into an array of strings
+  var strSplit = str.split(' ');
+  // var strSplit = "The quick brown fox jumped over the lazy dog".split(' ');
+  // var strSplit = ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"];
+	
+  // Step 2. Initiate a variable that will hold the length of the longest word
+  var longestWord = 0;
+
+  // Step 3. Create the FOR loop
+  for(var i = 0; i < strSplit.length; i++){
+    if(strSplit[i].length > longestWord){ // If strSplit[i].length is greater than the word it is compared with...
+	longestWord = strSplit[i].length; // ...then longestWord takes this new value
+     }
+  }
+  /* Here strSplit.length = 9
+     For each iteration: i = ?   i < strSplit.length?   i++  if(strSplit[i].length > longestWord)?   longestWord = strSplit[i].length
+     1st iteration:        0             yes             1   if("The".length > 0)? => if(3 > 0)?     longestWord = 3
+     2nd iteration:        1             yes             2   if("quick".length > 3)? => if(5 > 3)?   longestWord = 5   
+     3rd iteration:        2             yes             3   if("brown".length > 5)? => if(5 > 5)?   longestWord = 5   
+     4th iteration:        3             yes             4   if("fox".length > 5)? => if(3 > 5)?     longestWord = 5  
+     5th iteration:        4             yes             5   if("jumped".length > 5)? => if(6 > 5)?  longestWord = 6 
+     6th iteration:        5             yes             6   if("over".length > 6)? => if(4 > 6)?    longestWord = 6 
+     7th iteration:        6             yes             7   if("the".length > 6)? => if(3 > 6)?     longestWord = 6
+     8th iteration:        7             yes             8   if("lazy".length > 6)? => if(4 > 6)?    longestWord = 6 
+     9th iteration:        8             yes             9   if("dog".length > 6)? => if(3 > 6)?     longestWord = 6 
+     10th iteration:       9             no               
+     End of the FOR Loop*/
+
+  //Step 4. Return the longest word
+  return longestWord; // 6
+}
+
+findLongestWord("The quick brown fox jumped over the lazy dog");
+```
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Find the Longest Word With the sort() Method:
+The sort() method sorts the elements of an array in place and returns the array.
+```js
+function findLongestWord(str) {
+  // Step 1. Split the string into an array of strings
+  var strSplit = str.split(' ');
+  // var strSplit = "The quick brown fox jumped over the lazy dog".split(' ');
+  // var strSplit = ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"];
+  
+  // Step 2. Sort the elements in the array
+  var longestWord = strSplit.sort(function(a, b) { 
+    return b.length - a.length;
+  });
+  /* Sorting process
+    a           b            b.length     a.length     var longestWord
+  "The"      "quick"            5            3         ["quick", "The"]
+  "quick"    "brown"            5            5         ["quick", "brown", "The"]  
+  "brown"    "fox"              3            5         ["quick", "brown", "The", "fox"]
+  "fox"      "jumped"           6            3         ["jumped", quick", "brown", "The", "fox"]
+  "jumped"   "over"             4            6         ["jumped", quick", "brown", "over", "The", "fox"]
+  "over"     "the"              3            4         ["jumped", quick", "brown", "over", "The", "fox", "the"]
+  "the"      "lazy"             4            3         ["jumped", quick", "brown", "over", "lazy", "The", "fox", "the"]
+  "lazy"     "dog"              3            4         ["jumped", quick", "brown", "over", "lazy", "The", "fox", "the", "dog"]
+  */
+  
+  // Step 3. Return the length of the first element of the array
+  return longestWord[0].length; // var longestWord = ["jumped", "quick", "brown", "over", "lazy", "The", "fox", "the", "dog"];
+                                // longestWord[0]="jumped" => jumped".length => 6
+}
+
+findLongestWord("The quick brown fox jumped over the lazy dog");
+```
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Find the Longest Word With the reduce() Method:
+The reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
+reduce() executes a callback function once for each element present in the array.
+
+```js
+function findLongestWord(str) {
+  // Step 1. Split the string into an array of strings
+  var strSplit = str.split(' ');
+  // var strSplit = "The quick brown fox jumped over the lazy dog".split(' ');
+  // var strSplit = ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"];
+
+  // Step 2. Use the reduce method
+  var longestWord = strSplit.reduce(function(longest, currentWord) {
+    if(currentWord.length > longest.length)
+       return currentWord;
+    else
+       return longest;
+  }, "");
+  
+  /* Reduce process
+  currentWord      longest       currentWord.length     longest.length    if(currentWord.length > longest.length)?   var longestWord
+  "The"             ""                  3                     0                              yes                          "The"
+  "quick"           "The"               5                     3                              yes                         "quick"
+  "brown"           "quick"             5                     5                              no                          "quick"
+  "fox"             "quick"             3                     5                              no                          "quick"
+  "jumped"          "quick"             6                     5                              yes                         "jumped"
+  "over"            "jumped"            4                     6                              no                          "jumped"
+  "the"             "jumped"            3                     6                              no                          "jumped"
+  "lazy"            "jumped"            4                     6                              no                          "jumped"
+  "dog"             "jumped"            3                     6                              no                          "jumped"
+  */
+  
+  // Step 3. Return the length of the longestWord
+  return longestWord.length; // var longestWord = "jumped" 
+                             // longestWord.length => "jumped".length => 6
+}
+
+findLongestWord("The quick brown fox jumped over the lazy dog");
+
+```
+----------------------------------------------------------------------------------------------------------------------------------------
+
