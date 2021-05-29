@@ -266,3 +266,37 @@ Finally, the event loop permanently monitors whether the call stack is empty. If
 
  Job queue vs task queue:
  
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Iterator, Generator and Yield
+https://www.javascripttutorial.net/es6/javascript-iterator/
+
+Generator: ES6 introduces a new kind of function that is different from a regular function: function generator or generator.
+A generator can pause midway and then continues from where it paused. For example:
+
+function* generate() {
+    console.log('invoked 1st time');
+    yield 1;
+    console.log('invoked 2nd time');
+    yield 2;
+}
+let result = gen.next();
+console.log(result);
+Code language: JavaScript (javascript)
+Output:
+
+invoked 1st time
+{ value: 1, done: false }
+
+Generators are created by the generator function function* f(){}.
+Generators do not execute its body immediately when they are invoked.
+Generators can pause midway and resumes their executions where they were paused. The yield statement pauses the execution of a generator and returns a value.
+Generators are iterable so you can use them with the for...of loop.
+
+Yield: 
+The yield keyword allows you to pause and resume a generator function (function*).
+The following shows the syntax of the yield keyword:
+[variable_name] = yield [expression];
+
+https://stackoverflow.com/questions/2282140/whats-the-yield-keyword-in-javascript
+
+ 
