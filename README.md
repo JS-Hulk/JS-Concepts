@@ -292,6 +292,90 @@ Generators do not execute its body immediately when they are invoked.
 Generators can pause midway and resumes their executions where they were paused. The yield statement pauses the execution of a generator and returns a value.
 Generators are iterable so you can use them with the for...of loop.
 
+let i = [ 1,2,3,4]
+
+let iterator = i[Symbol.iterator]()
+
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+// output:{
+  done: false,
+  value: 1
+}
+{
+  done: false,
+  value: 1
+}
+{
+  done: false,
+  value: 2
+}
+{
+  done: false,
+  value: 3
+}
+{
+  done: false,
+  value: 4
+}
+{
+  done: true,
+  value: undefined
+}
+
+.....
+function *generator(){
+	yield 1;
+  yield 2;
+  yield 3;
+  yield 4;
+}
+let iterator = generator()
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+....
+function *infiniteGenerator(){
+	let i=0;
+  while(true){
+  	yield i;
+    i++;
+  }
+}
+let iterator = infiniteGenerator()
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+....
+function *generator(){
+ yield 1;
+ yield* anotherGenerator();
+ // return "hello"
+ yield 3;
+}
+
+function *anotherGenerator(){
+	yield 2;
+}
+
+let iterator = generator()
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+
+returning any value will stop the generator
+....
+
+
 Yield: 
 The yield keyword allows you to pause and resume a generator function (function*).
 The following shows the syntax of the yield keyword:
