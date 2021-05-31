@@ -383,4 +383,14 @@ The following shows the syntax of the yield keyword:
 
 https://stackoverflow.com/questions/2282140/whats-the-yield-keyword-in-javascript
 
- 
+
+Itrables and Iterator
+* arrays are considered as the Iterator and objects are not iterators.
+*  In arrays if i do console.dir(array)  we can see Symbol.iterator in the prototype method. But we don't have in the objects.
+*  because of symbol.iterator we are having for..of loop and for..in loop
+
+ let a = [1,2, 3, 4];
+
+let iterator = a[Symbol.iterator]()
+
+console.log(iterator.next())
