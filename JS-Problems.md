@@ -767,6 +767,22 @@ function largestOfFour(mainArray) {
 
 largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
 ```
+
+....
+```js
+
+console.log(largestNumberArray( [1, 20, 300, 400, 50000]))
+
+function largestNumberArray(arr){
+  let largestNumber = 0;
+  for(let a of arr){
+    if( a > largestNumber){
+      largestNumber = a;
+    }
+  }
+  return largestNumber;
+}
+```
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 Return the Largest Numbers in a Array With Built-In Functions — with map() and apply():
 
