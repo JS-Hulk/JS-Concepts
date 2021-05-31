@@ -389,9 +389,11 @@ function confirmEnding(string, target) {
   return string.endsWith(target); // 'Bastian'.endsWith('n')
 }
 confirmEnding('Bastian', 'n');
-```javascript
+```
 -----------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## Two Ways to Check for Palindromes in JavaScript
+
 A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward. The word “palindrome” was first coined by the English playwright Ben Jonson in the 17th century, from the Greek roots palin (“again”) and dromos (“way, direction”). — src. Wikipedia
 Algorithm Challenge
 Return true if the given string is a palindrome. Otherwise, return false.
