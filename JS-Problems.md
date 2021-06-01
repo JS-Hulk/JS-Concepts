@@ -923,5 +923,108 @@ function factorialize(num) {
 }
 factorialize(5);
 ```
-------------------------------------------------------------------------------------------------------------------------------------------------
 You can pass an array of arguments to a function by using the apply() method and the function will execute the items in the array.
+------------------------------------------------------------------------------------------------------------------------------------------------
+## generate all combinations of a string in JavaScript
+```js
+
+possibleCombinations('Dog')
+
+function possibleCombinations(str){
+    let listOfComination = [];
+    for(let i=0; i< str.length; i++){
+        for(let j=i + 1; j < str.length+1; j++){
+            listOfComination.push(str.slice(i, j))
+        }
+    }
+    return listOfComination;
+}
+```
+--------------------------------------------------------------------------------------------------------------------------------------------------
+## How to get the number of occurrences of each letter in specified string in JavaScript 
+```js
+
+// test string 
+let test =  "helloworld";
+count_occurs( test, count);
+ 
+function count_occurs(str, callback){
+    if(str.length === 0){
+        console.log("empty string")
+    }
+    else{
+        let map= new Map()
+    for(let i=0; i< str.length; i++){
+       
+        map.set(str[i], 0)
+    }
+    //console.log(map)
+    callback(str, map)
+    }
+
+}
+
+function count(str, mapOut){
+    for(let i=0; i< str.length; i++){
+        let k= mapOut.get(str[i])
+        mapOut.set(str[i], k+1)
+        //console.log(mapOut)
+    }
+    printAns(mapOut)
+}
+
+function printAns(ans){
+    for(let [key, value] of ans){
+        console.log(` ${key} occurs :  ${value}`)
+    }
+}
+
+```
+------------------------------------------------------------------------------------------------------------------------------------------------------
+## How to find the longest word within the string in JavaScript
+Using regex and for..loop
+Using split and sort() method
+Using split and reduce() method
+
+```js
+console.log(longest("This is a demo String find the largest word from it"));
+
+function longest(str){
+  let lng = 0;
+  let str1 = "";
+  let splitStr = str.split(' ');
+  for(let i=0; i< splitStr.length; i++){
+    //console.log(splitStr[i])
+    if(splitStr[i].length > lng){
+      lng = splitStr[i].length
+      str1 = splitStr[i]
+    }
+  }
+  return str1;
+}
+```
+.....using sort
+```js
+console.log(longest("This is a demo String find the largest word from it"));
+
+function longest(str){
+  let splitStr = str.split(' ')
+  return splitStr.sort((a, b)=> b.length - a.length)[0]
+}
+```
+....using reduce
+```js
+console.log(longest("This is a demo String find the largest word from it"));
+
+function longest(str){
+  let splitStr = str.split(' ')
+  let index = splitStr.reduce((acc, curr, i)=>{
+    if(curr.length > splitStr[acc].length){
+      return i;
+    }
+    return acc;
+  },0)
+  return splitStr[index]
+}
+```
+----------------------------------------------------------------------------------------------------------------------------------------
