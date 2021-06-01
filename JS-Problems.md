@@ -1028,3 +1028,36 @@ function longest(str){
 }
 ```
 ----------------------------------------------------------------------------------------------------------------------------------------
+## How to check a given string is an anagram of another string in JavaScript ?
+Anagram: An anagram is a word or sentence, which usually contains all the original letters exactly once, in order to arrange the letters of a different term or phrase. Some of the examples are given below:
+```js
+console.log(checkAnagram('abc', 'cba'))
+
+function checkAnagram(str1, str2){
+  let s1= str1.split('').sort().join('')
+  let s2 =str2.split('').sort().join('')
+  return s1 === s2
+}
+```
+--------------------------------------------------------------------------------------------------------------------------------------------
+## How to create half of the string in uppercase and the other half in lowercase
+https://www.geeksforgeeks.org/how-to-create-half-of-the-string-in-uppercase-and-the-other-half-in-lowercase/ 
+
+```js
+console.log(changedString("shubham"));
+
+function changedString(str){
+  let s1= str.length;
+  let firstPart = "";
+  let secondPart = "";
+
+  for(let i=0; i< Math.ceil(s1/2); i++){
+    firstPart += str[i];
+  }
+  for(let j= Math.ceil(s1/2); j< s1; j++){
+    secondPart += str[j]
+  }
+  return firstPart.toUpperCase() + secondPart;
+}
+```
+
