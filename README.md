@@ -473,5 +473,19 @@ console.log([...new Set(arry)]) //get unique values and for array
 waeksets are not iterable object. no for..of loop. we cannot pass primitive value as an argument
 const ws= new WeakSet([{a: 1}, {b:2}])
 console.log(ws)
+```js
+var weakset = new WeakSet(),
+    numbers = [1, 2, 3];
+
+weakset.add(numbers);
+weakset.add({name: "Charlie"});
+
+console.log(weakset.has(numbers));
+
+numbers = undefined;
+
+console.log(weakset.has(numbers));
+```
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
