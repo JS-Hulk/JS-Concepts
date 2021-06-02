@@ -394,3 +394,84 @@ Itrables and Iterator
 let iterator = a[Symbol.iterator]()
 
 console.log(iterator.next())
+--------------------------------------------------------------------------------------------------------------------------------------------
+## Maps and WeakMaps
+Javascript Object supports one key object it will not support multiple key object
+```js
+
+const x={}
+
+const a={}
+
+const b={
+  num:1
+}
+
+x[a] = 'a'
+x[b] = 'b'
+console.log(x)
+```
+
+...maps:
+```js
+const a={}
+const b={
+  num:1
+}
+
+const map = new Map();
+
+map.set(a, 'a').set(b, 'b')
+
+console.log(map)
+
+for(let [key, value] of map.entries()){
+  console.log(key, value)
+}
+
+const array = [...map]
+console.log(array)
+```
+
+.........weakMaps:
+keys in the map remains not even garbage collected even when we remove the actual key
+```js
+{
+let x={
+number:10
+};
+
+var map= new Map();
+// var weakMap = new waekMap()
+map.set(x, "something")
+}
+
+console.log(map)
+```
+--------------------------------------------------------------------------------------------------------------------------------------------------
+## Sets and weakSets
+sets are reference data types. we cannot have duplicate values inside the sets. cannot add elemets to set like array i.e. arr[0]=1;
+set will take the argument which is iterable.
+```js
+// const set= new Set();
+
+// set.add(1).add(2)
+// console.log(set)
+
+const arr= [1,2,3]
+const set =new Set(arr);
+
+for(let val of set){
+  console.log(val)
+}
+
+const arry= [1,2,2,2,3,4]
+
+console.log([...new Set(arry)]) //get unique values and for array
+```
+.......weakSet
+waeksets are not iterable object. no for..of loop. we cannot pass primitive value as an argument
+const ws= new WeakSet([{a: 1}, {b:2}])
+console.log(ws)
+
+
