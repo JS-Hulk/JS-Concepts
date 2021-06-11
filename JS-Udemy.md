@@ -303,3 +303,254 @@ console.log(another2)
 
 ```
 ------------------------------------------------------------------------------------------------------------------------------
+
+```js
+// String
+
+// Primitive type of String
+let str = "shubham"
+console.log(typeof(str)) //string 
+
+// Reference/Object type
+let str1= new String('shubham');
+console.log(typeof(str1)) //Object
+
+// template literals we have ``
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+```js
+// Exercise1 
+
+const  address ={
+  street: "main road",
+  city: "bangalore",
+  zipCode: 560045,
+}
+
+function showAddress(address){
+  // console.log(`street: ${address.street}
+  // city: ${address.city}
+  // zipCode: ${address.zipCode}`)
+
+  for(let val in address){
+    console.log(val, address[val])
+  }
+}
+
+showAddress(address)
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+```js
+// Exercise2
+
+const  address ={
+  street: "main road",
+  city: "bangalore",
+  zipCode: 560045,
+}
+
+// Factory function
+function addressFactory(street, city, zipCode){
+  return {
+      street,
+      city,
+      zipCode
+  }
+}
+
+let address1= addressFactory("main road", "bangalore", 581455)
+console.log(address1)
+
+// Constructor function
+function addressConstructor(street, city, zipCode){
+  this.street = street
+  this.city = city
+  this.zipCode = zipCode
+}
+let address2= new addressConstructor("main road", "Bangalore", 564500)
+console.log(address2)
+```
+---------------------------------------------------------------------------------------------------------------------
+
+```js
+// Exercise3
+
+// Constructor function
+function addressConstructor(street, city, zipCode){
+  this.street = street
+  this.city = city
+  this.zipCode = zipCode
+}
+let address1= new addressConstructor("main road", "Bangalore", 564500)
+let address2= new addressConstructor("main road", "Bangalore", 564500)
+
+
+function areEqual(address1, address2){
+  return address1.street === address2.street && 
+  address1.city === address2.city &&
+  address1.zipCode === address2.zipCode
+}
+
+function areSame(address1, address2){
+  return address1 === address2
+}
+
+console.log(areEqual(address1, address2)) //true
+console.log(areSame(address1, address2)) //false
+```
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+```js
+// Array
+
+const number = [3, 4];
+
+// start
+number.unshift(1,2)
+console.log(number)
+
+// end
+number.push(5,6)
+console.log(number)
+
+// middle
+number.splice(2, 0, 'a', 'b')
+console.log(number)
+
+// Finding elements primitive type
+const a= [1,2,3,4,5,1,7,3,4]
+console.log(a.indexOf(1)) //0
+console.log(a.indexOf('a')) // -1
+console.log(a.lastIndexOf(1)) //5
+console.log(a.includes(4)) // true
+
+// Finding the elemet refernce type
+const courses = [
+  {id: 1, name:'a'},
+  {id: 2, name: 'b'}
+]
+console.log(courses.includes({id:1, name:'a'})) // false
+
+// we can use findIndex also
+const course = courses.find(function(course){
+  return course.name === 'a'
+})
+console.log(course) // {id: 1, name:'a'}
+
+// Removing elements from Array
+
+const number = [1,2,3,4,5,6]
+
+//end
+const last= number.pop()
+console.log(last)
+console.log(number)
+
+//start
+const start= number.shift()
+console.log(start)
+console.log(number)
+
+// middle
+const middle = number.splice(3, 2)
+console.log(middle)
+console.log(number)
+
+// emptying Array
+let number1 = [1,2,3,4,5,6]
+
+//solution 1
+number1 = [];
+
+//solution 2
+number1.length = 0;
+
+// solution 3
+number1.slice(0, number1.length)
+
+// solutiopn 4
+while(number1.length > 0){
+  number1.pop()
+}
+
+// Combining and slicing array
+
+let first = [1,2,3];
+let second = [4,5,6];
+
+//let combined = first.concat(second)
+let combined = [...first, ...second]
+console.log(combined)
+
+let sliced = combined.slice(2)
+console.log(sliced)
+
+// Iterating an array
+const numbers= [1,2,3,4,5,6]
+
+for(let number of numbers) console.log(number)
+
+numbers.forEach((number, index) => console.log(number, index))
+
+//Joining array
+const number1= [1,2,3]
+const number2 = number1.join(',')
+console.log(number2) //
+
+let str= "this is the example string "
+let str1 =  str.split(' ')
+console.log(str1)
+console.log(str1.join('-'))
+
+// Sorting Array
+const number = [3,2,1]
+console.log(number.sort())
+console.log(number.reverse())
+
+const courses = [
+  {id:1, name: "Node"},
+  {id:2, name: "Js"}
+]
+courses.sort((a,b)=>{
+  // a>b =>1
+  // a<b =>-1
+  // a===b =>0
+  if(a.name >b.name) return 1;
+  if(a.name < b.name) return -1
+  return 0;
+})
+console.log(courses)
+
+// Testing the elements of the array
+const number1= [1, 2, 3, -5,10]
+
+const a= number1.every((value)=>{
+  return value>=0
+})
+console.log(a)
+
+const b= number1.some((value)=>{
+  return value>=0
+})
+console.log(b)
+
+// Filter the array
+const c= number1.filter(number => number>=0)
+console.log(c)
+
+// Map in Array
+const d= c.map(n => ({value: n}))
+console.log(d)
+
+// Reducing array
+const reducedArray = number1.reduce((accu, current)=> accu+current,2)
+console.log(reducedArray)
+```
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
