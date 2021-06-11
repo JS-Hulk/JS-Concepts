@@ -1060,4 +1060,25 @@ function changedString(str){
   return firstPart.toUpperCase() + secondPart;
 }
 ```
+--------------------------------------------------------------------------------
 
+### FizzBuzz
+```js
+// Divisible by 3 => Fizz
+// Divisble by 5 => Buzz
+// Divisible by both 3 and 5 => FizzBuzz
+// Not Divisible by 3 and 5 => input
+// Not a Number => not a Number
+
+fizzBuzz(2)
+
+function fizzBuzz(input){
+  if( input % 3 === 0 && input % 5 === 0) console.log("FizzBuzz")
+  
+   else if( input % 3 === 0) console.log("Fizz")
+  else if(input % 5 === 0) console.log("Buzz")
+ 
+  else if(input % 3 !== 0 && input % 5 !== 0) console.log(input)
+  else console.log("Not a number")
+}
+```
