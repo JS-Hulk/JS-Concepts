@@ -554,3 +554,111 @@ console.log(reducedArray)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
+```js
+// Exercise 1
+console.log(arrayFromRange(-1,5))
+function arrayFromRange(min, max){
+  let arr=[];
+  for(let i=min; i<=max; i++){
+    arr.push(i)
+  }
+  return arr
+}
+
+//Exercise 2
+const number = [1,2,3,4,5];
+//console.log(number.includes(4))
+
+function include(arr, searchEle){
+  for(let i=0; i< arr.length; i++){
+    if(arr[i] === searchEle) return true
+  }
+  return false
+}
+console.log(include(number, 10))
+
+// Exercise 3
+
+const number = [1,2,3,4,5,1,1,1]
+
+console.log(except(number, [1,2]))
+function except(arr, excluded){
+  let output =[];
+  for(let el of arr){
+    if(!excluded.includes(el)){
+      output.push(el)
+    }
+  }
+  return output
+}
+
+// Exercise 4
+
+const number = [1,2,3,4]
+
+console.log(move(number, 0, 1))
+
+function move(arr, index, offset){
+  let position = index+offset;
+  if(position >= arr.length || position <0){
+  console.error("invalid")
+  return;
+  }
+  let output = [...number]
+  let element = output.splice(index, 1)[0]
+  output.splice(index+offset, 0, element)
+  return output
+}
+
+// Exercise 5
+
+const number = [1,2,3,4, 1,2,1,1]
+
+console.log(countOccurance1(number, 1))
+
+function countOccurance(arr, search){
+  let count = 0;
+  for(let el of arr){
+    if(el === search){
+      count++
+    }
+  }
+  return count
+}
+
+function countOccurance1(arr, search){
+  return arr.reduce((acc, curr)=>{
+    if(curr === search){
+      acc++
+    }
+    return acc;
+  }, 0)
+}
+
+// Exercise 6
+
+const number = [200,1,2,4,5000]
+
+console.log(getMax1(number))
+
+function getMax(arr){
+  let max=0;
+  for(let el of arr){
+    if(el > max){
+      max = el
+    }
+  }
+  return max
+}
+
+function getMax1(arr){
+  return arr.reduce((acc, curr)=>{
+    console.log(acc, curr)
+    if( curr > acc){
+      return curr
+    }
+    return acc
+  }, 0)
+}
+
+```
