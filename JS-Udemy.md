@@ -662,3 +662,167 @@ function getMax1(arr){
 }
 
 ```
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+```js
+// 1 + undefined => NaN
+
+function sum(){
+  let total = 0;
+  for(let el of arguments){
+    total += el
+  }
+  return total
+}
+console.log(sum(1,2,3,4,5))
+
+function sum1(...args){
+  return args.reduce((a,b)=> a+b)
+}
+console.log(sum1(1,2,3,4,5))
+
+
+// Getter and Setters
+const person={
+  firstName : "shubham",
+  lastName: "vinayak",
+  get fullName(){
+    return `${person.firstName} ${person.lastName}`
+  },
+  set fullName(value){
+    if( typeof value !== "string"){
+      throw new Error(' Value is not a string')
+    }
+    let parts = value.split(' ')
+    if(parts.length !== 2){
+      throw new Error(" Enter first name and lastanme")
+    }
+    this.firstName = parts[0];
+    this.lastName = parts[1];
+  }
+}
+
+//console.log(person.fullName())
+
+//using getter access like property. we need to prefix with getter
+console.log(person.fullName)
+
+person.fullName = "Ram Hegde"
+
+console.log(person.fullName)
+
+try{
+  //person.fullName =null
+  person.fullName = ''
+}
+catch (e){
+  console.log(e)
+}
+console.log(person.fullName)
+
+
+// Scope
+
+function start(){
+  for(var i=0; i<5; i++){
+    console.log(i)
+
+    if(true){
+      var color='red'
+    }
+  }
+  console.log(color)// if we replace var with let we get error
+  console.log(i)
+}
+start()
+// var is function scoped
+// let and const is block scoped
+// avoid using var key which create global scope or fucntion scope
+
+
+// this
+
+// method -> obj
+const video={
+  title: 'a',
+  play(){
+    console.log(this)
+  }
+}
+video.stop = function(){
+  console.log(this)
+}
+video.stop()
+
+// function -> global(window, global)
+function a(){
+  console.log(this)
+}
+a() //window object
+
+
+function Video(title){
+  this.title = title;
+  console.log(this)
+}
+const v= new Video('a') //{}
+console.log(v) //this=> new object Video
+
+// method -> obj
+const video={
+  title: 'a',
+  tags: ['a', 'b', 'c'],
+  showTag(){
+    this.tags.forEach(function(tag){
+      console.log(this.title, tag)
+    }, this)
+  }
+}
+video.showTag()
+
+// method -> obj approach 2
+const video={
+  title: 'a',
+  tags: ['a', 'b', 'c'],
+  showTag(){
+    let self = this;
+    this.tags.forEach(function(tag){
+      console.log(self.title, tag)
+    }, this)
+    // bind(this) can be used or arrow function
+  }
+}
+video.showTag()
+
+.......
+function playVideo(){
+  console.log(this)
+}
+
+playVideo.call({name: "shubham"}, 1,2)
+playVideo.apply({name: "shubham"} , [1,2,3])
+playVideo.bind({name:"shubham"})()
+
+
+// Exercise 1
+
+function sum(...items){
+  if(items.length === 1 && Array.isArray(items[0])){
+    items = [...items[0]]
+  }
+  return items.reduce((a,c)=> a+c)
+}
+console.log(sum([1,2,3,4]))
+
+........
+// Exercise 2
+
+const circle={
+  radius: 1,
+  get area(){
+    return Math.PI * this.radius * this.radius
+  }
+}
+console.log(circle.area)
+
